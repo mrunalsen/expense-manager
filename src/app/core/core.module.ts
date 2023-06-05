@@ -18,6 +18,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule
+  ],
+  exports: [
+    MasterComponent
   ]
 })
 export class CoreModule { }
