@@ -5,8 +5,11 @@ import { MasterComponent } from './core/components/master/master.component';
 const routes: Routes = [
   {
     path: '', component: MasterComponent,
-
-  }
+    children: [
+      { path: '', redirectTo: 'tracker', pathMatch: 'full' },
+      { path: 'tracker', loadChildren: () => import('./tracker/tracker.module').then(m => m.TrackerModule) }
+    ]
+  },
 ];
 
 @NgModule({
