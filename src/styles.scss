@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+// Project base and component style import
+@import 'assets/scss/base/index';
+
+// Project Specific Components
+@import 'assets/scss/component/index';
+
+// Now other style import
+@import 'assets/scss/layout/index';
+
+@import 'assets/scss/utilities/index';
+
+@import 'assets/scss/vendor/bootstrap';
