@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TrackerComponent } from './tracker.component';
+import { TrackerContainerComponent } from './tracker-container/tracker-container.component';
 
-const routes: Routes = [{ path: '', component: TrackerComponent }];
+const routes: Routes = [
+  { path: '', component: TrackerContainerComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

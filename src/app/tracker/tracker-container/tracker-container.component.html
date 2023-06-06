@@ -1,0 +1,83 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark my-4" data-bs-toggle="modal" data-bs-target="#signup">
+    Add
+</button>
+
+<!-- Modal -->
+<!-- Add new -->
+<div class="modal fade" id="signup" data-bs-keyboard="false" tabindex="-1" aria-labelledby="signupLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="signupLabel">Add new</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="addData()">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            formControlName="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" formControlName="password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card -->
+<div class="card">
+    <div class="card-body bg-info rounded p-3" *ngFor="let data of trackerData">
+        <h5 class="card-title">Ttile</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+        <p class="card-text">{{data.email}}</p>
+        <p class="card-text">{{data.password}}</p>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-dark rounded-circle" data-bs-toggle="modal" data-bs-target="#editForm"
+                (click)="updateData(data)">
+                <i class="bi bi-pen"></i>
+            </button>
+            <button class="btn btn-danger rounded-circle" (click)="deleteData(data)">
+                <i class="bi bi-trash3"></i></button>
+        </div>
+        <!-- Edit -->
+        <div class="modal fade" id="editForm" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editFormLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editFormLabel">Edit Form</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="editForm">
+                            <div class="mb-3">
+                                <label for="editEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp"
+                                    formControlName="edit_email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="editPassword"
+                                    formControlName="edit_password">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

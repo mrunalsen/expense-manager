@@ -2,16 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TrackerRoutingModule } from './tracker-routing.module';
-import { TrackerComponent } from './tracker.component';
+import { TrackerService } from './tracker.service';
+import { TrackerContainerComponent } from './tracker-container/tracker-container.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    TrackerComponent
+    TrackerContainerComponent
   ],
   imports: [
     CommonModule,
-    TrackerRoutingModule
+    TrackerRoutingModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    TrackerService
   ]
 })
 export class TrackerModule { }
