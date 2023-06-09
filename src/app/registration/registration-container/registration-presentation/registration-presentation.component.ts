@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { RegistrationPresenterService } from '../registration-presenter/registration-presenter.service';
 import { User } from '../../registration.model';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'registration-presentation',
@@ -23,15 +24,23 @@ export class RegistrationPresentationComponent implements OnInit {
   public formSubmitted: boolean;
   private _formData!: User[];
 
+  public fireForm: FormGroup;
+
 
   constructor(
-    private readonly _regPresenter: RegistrationPresenterService
+    private readonly _regPresenter: RegistrationPresenterService,
+    private formBuilder: FormBuilder,
+    private auth: AuthService
   ) {
     this.regForm = _regPresenter.formBuild();
     this.add = new EventEmitter<User>();
     this.edit = new EventEmitter<User>();
 
     this.formSubmitted = false;
+    this.fireForm = this.formBuilder.group({
+      email: [],
+      password: []
+    });
   }
   ngOnInit(): void {
     this._regPresenter.formData$.subscribe((res) => {
@@ -47,4 +56,11 @@ export class RegistrationPresentationComponent implements OnInit {
     this.regForm.reset();
   }
 
+
+  public onRegister() {
+    if (this.fireForm.valid) {
+      this.auth.register(this.fireForm.value.email, this.fireForm.value.password);
+      console.log(this.fireForm.value);
+    }
+  }
 }

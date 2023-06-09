@@ -1,4 +1,15 @@
-<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="fireForm" (ngSubmit)="onRegister()">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!-- <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
@@ -24,4 +35,4 @@
         <input type="text" class="form-control" id="lastname" formControlName="lastname">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</form> -->

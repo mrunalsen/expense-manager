@@ -5,6 +5,8 @@ import { LoginComponent } from './components/login/login.component';
 import { MasterComponent } from './components/master/master.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -17,10 +19,12 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     MasterComponent
-  ]
+  ],
+  providers: [AuthService]
 })
 export class CoreModule { }
