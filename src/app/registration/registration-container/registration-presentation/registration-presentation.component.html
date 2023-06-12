@@ -1,0 +1,38 @@
+<form [formGroup]="fireForm" (ngSubmit)="onRegister()">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!-- <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+    <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirm_password">
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" formControlName="username">
+    </div>
+    <div class="mb-3">
+        <label for="firstname" class="form-label">First name</label>
+        <input type="text" class="form-control" id="firstname" formControlName="firstname">
+    </div>
+    <div class="mb-3">
+        <label for="lastname" class="form-label">last name</label>
+        <input type="text" class="form-control" id="lastname" formControlName="lastname">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->

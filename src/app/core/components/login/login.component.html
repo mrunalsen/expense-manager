@@ -1,1 +1,101 @@
-<p>login works!</p>
+<ng-container *ngIf="isMobile; then desktop; else mobile"></ng-container>
+
+<!-- Start : Desktop view -->
+<ng-template #desktop>
+    <div class="d-flex position-relative overflow-hidden h-100">
+        <!-- Start : Login -->
+        <div class=" d-flex col-6 justify-content-center align-items-center login-container overflow-hidden">
+            <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onLogin()"
+                [ngClass]="{'translateRight': translateR}">
+                <h2>Log In</h2>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password">
+                </div>
+                <div class="mb-3 text-center">
+                    <a class="btn" routerLink="/signup">Forgot password?</a>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">login</button>
+                </div>
+            </form>
+        </div>
+        <!-- End : Login -->
+        <!-- Start : Sign up -->
+        <div class="d-flex col-6 justify-content-center align-items-center overflow-hidden">
+            <form class="form-container" [ngClass]="{'translate-left': translate}">
+                <h2>Sign Up</h2>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="username" class="form-control" id="username">
+                </div>
+                <div class="mb-3">
+                    <label for="signupEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="signupEmail">
+                </div>
+                <div class="mb-3">
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="signupPassword">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <!-- End : Sign up -->
+        <!-- Start : overlay -->
+        <div class="login-overlay-container bg-info d-flex align-items-center"
+            [ngClass]="{'translateRight': translate }">
+            <div class="login-overlay w-100 text-center">
+
+                <img src="/assets/img/loginBG.png" alt="login background" class="login-bg h-100"
+                    [ngClass]="{'login-bg-x': translateR}">
+
+                <div class="login-overlay-panel w-100 translate-left overlay-left"
+                    [ngClass]="{'translate-left': translate}">
+                    <h2>Already have an account?</h2>
+                    <p>login!</p>
+                    <button class="btn btn-warning" id="signIn" (click)="onTranslate()">Sign In</button>
+                </div>
+                <div class="login-overlay-panel w-100 overlay-right" [ngClass]="{'translateRight': translateR}">
+                    <h2>Dont have an account?</h2>
+                    <p>Sign up now!</p>
+                    <button class="btn btn-warning" id="signUp" (click)="onTranslate()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <!-- End : overlay -->
+    </div>
+</ng-template>
+<!-- End : Desktop view -->
+
+<!-- Start : Mobile view -->
+<ng-template #mobile>
+    <section class="container">
+        <header>
+            <h1>Sign In</h1>
+        </header>
+        <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onLogin()"
+            [ngClass]="{'translateRight': translateR}">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn">Forgot password?</button>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">login</button>
+            </div>
+        </form>
+    </section>
+</ng-template>
+<!-- End : Mobile view -->

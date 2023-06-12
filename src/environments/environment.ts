@@ -13,9 +13,6 @@ export const environment = {
     appId: "1:408866978120:web:073335e2daf39f26259b7d",
     measurementId: "G-RR8TV1B0E9"
   },
-  // apiURL: 'http://172.16.3.107:2132/api/v1/'
-  // apiURL: 'https://onechat-jj9m.onrender.com/api/v1/'
-  baseURL: 'http://localhost:3000'
 };
 
 /*
