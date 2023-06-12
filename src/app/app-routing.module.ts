@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './core/components/login/login.component';
 import { MasterComponent } from './core/components/master/master.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { ForgetPasswordContainerComponent } from './registration/forget-password-container/forget-password-container.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,9 +13,11 @@ const routes: Routes = [
   },
   {
     path: '', component: MasterComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'signup', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'forgot-password', component: ForgetPasswordContainerComponent },
+      { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
     ]
   },
 ];

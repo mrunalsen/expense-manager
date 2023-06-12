@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   public onLogin() {
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
-      this.router.navigateByUrl('signup');
+      this.router.navigateByUrl('dashboard');
     }
   }
   public onTranslate() {
