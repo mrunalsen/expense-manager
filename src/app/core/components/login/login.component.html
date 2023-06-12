@@ -6,7 +6,7 @@
         <!-- Start : Login -->
         <div class=" d-flex col-6 justify-content-center align-items-center login-container overflow-hidden">
             <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onLogin()"
-                [ngClass]="{'translate-right': translate1}">
+                [ngClass]="{'translateRight': translateR}">
                 <h2>Log In</h2>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
@@ -17,7 +17,7 @@
                     <input type="password" class="form-control" id="password" formControlName="password">
                 </div>
                 <div class="mb-3 text-center">
-                    <button class="btn">Forgot password?</button>
+                    <a class="btn" routerLink="/signup">Forgot password?</a>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">login</button>
@@ -49,11 +49,11 @@
         <!-- End : Sign up -->
         <!-- Start : overlay -->
         <div class="login-overlay-container bg-info d-flex align-items-center"
-            [ngClass]="{'translate-right': translate }">
+            [ngClass]="{'translateRight': translate }">
             <div class="login-overlay w-100 text-center">
 
                 <img src="/assets/img/loginBG.png" alt="login background" class="login-bg h-100"
-                    [ngClass]="{'login-bg-x': translate1}">
+                    [ngClass]="{'login-bg-x': translateR}">
 
                 <div class="login-overlay-panel w-100 translate-left overlay-left"
                     [ngClass]="{'translate-left': translate}">
@@ -61,7 +61,7 @@
                     <p>login!</p>
                     <button class="btn btn-warning" id="signIn" (click)="onTranslate()">Sign In</button>
                 </div>
-                <div class="login-overlay-panel w-100 overlay-right" [ngClass]="{'translate-right': translate1}">
+                <div class="login-overlay-panel w-100 overlay-right" [ngClass]="{'translateRight': translateR}">
                     <h2>Dont have an account?</h2>
                     <p>Sign up now!</p>
                     <button class="btn btn-warning" id="signUp" (click)="onTranslate()">Sign Up</button>
@@ -75,12 +75,12 @@
 
 <!-- Start : Mobile view -->
 <ng-template #mobile>
-    <section>
+    <section class="container">
         <header>
             <h1>Sign In</h1>
         </header>
         <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onLogin()"
-            [ngClass]="{'translate-right': translate1}">
+            [ngClass]="{'translateRight': translateR}">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="email" formControlName="email">

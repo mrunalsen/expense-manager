@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   public isMobile: boolean;
   public innerWidth: any;
   public translate: boolean;
-  public translate1: boolean;
+  public translateR: boolean;
   public loginForm: FormGroup;
 
   constructor(
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       password: []
     });
     this.translate = true;
-    this.translate1 = false;
+    this.translateR = false;
     this.isMobile = true;
   }
 
@@ -46,6 +46,6 @@ export class LoginComponent implements OnInit {
   }
   public onTranslate() {
     this.translate = !this.translate;
-    this.translate1 = !this.translate1;
+    this.translateR = !this.translateR;
   }
 }
