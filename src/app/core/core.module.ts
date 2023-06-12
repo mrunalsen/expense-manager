@@ -6,7 +6,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { MasterComponent } from './components/master/master.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
+import { LoaderService } from './services/loader/loader.service';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,13 +23,22 @@ import { AuthService } from './services/auth.service';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      enableHtml: true,
+      easing: 'ease-in',
+      timeOut: 5000,
+      extendedTimeOut: 2000,
+    }),
+    BrowserAnimationsModule
   ],
   exports: [
     MasterComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    LoaderService
   ]
 })
 export class CoreModule { }

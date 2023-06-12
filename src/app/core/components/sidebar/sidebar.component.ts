@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class SidebarComponent {
     private router: Router
   ) { }
   public onLogout() {
-    this.authserv.deleteToken();
+    this.authserv.logout();
     this.router.navigateByUrl('login');
   }
 }

@@ -2,6 +2,9 @@
 // Project base and component style import
 @import 'assets/scss/base/index';
 
+// Toaster
+@import 'ngx-toastr/toastr';
+
 // Project Specific Components
 @import 'assets/scss/component/index';
 
