@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
   // isLoggedIn: boolean;
+  public userToken: any;
   constructor(
     private firebaseAuth: AngularFireAuth,
     private router: Router
@@ -18,7 +19,7 @@ export class AuthService {
   public login(email: string, password: string): void {
     this.firebaseAuth.signInWithEmailAndPassword(email, password).then(() => {
       localStorage.setItem('token', 'true');
-      this.router.navigateByUrl('signup');
+      // this.router.navigateByUrl('signup');
     }, err => {
       alert(err.message);
       this.router.navigateByUrl('/login');
@@ -52,5 +53,13 @@ export class AuthService {
     },
       err => alert(err.message)
     );
+  }
+  public getToken() {
+    this.userToken = localStorage.getItem('token') ?? '';
+    return this.userToken;
+  }
+  public deleteToken() {
+    this.userToken = localStorage.removeItem('token');
+    return this.userToken;
   }
 }

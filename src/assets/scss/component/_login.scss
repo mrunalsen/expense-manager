@@ -1,0 +1,48 @@
+.form-container {
+    transition: 0.6s all ease-in-out;
+}
+
+.login-overlay-container {
+    position: absolute;
+    // left: 50%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+
+    .login-overlay {
+        position: relative;
+        color: #FFFFFF;
+        height: 100%;
+        transform: translateX(0);
+        transition: transform 0.6s ease-in-out;
+
+        &-panel {
+            transition: all 0.6s ease-in-out;
+            position: absolute;
+            top: 40%;
+        }
+
+    }
+
+}
+
+.translate-right {
+    transform: translateX(100%);
+}
+
+.translate-left {
+    transform: translateX(-100%);
+}
+
+.login-bg {
+    position: absolute;
+    left: 0;
+    transition: all 0.6s ease-in-out;
+}
+
+.login-bg-x {
+    transform: translateX(-20%);
+}

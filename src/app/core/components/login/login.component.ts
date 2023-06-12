@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -7,9 +7,17 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
-  // public email: string;
-  // public password: string;
+export class LoginComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.innerWidth = window.innerWidth;
+    this.innerWidth >= 768 ? this.isMobile = true : this.isMobile = false;
+  }
+
+  public isMobile: boolean;
+  public innerWidth: any;
+  public translate: boolean;
+  public translate1: boolean;
   public loginForm: FormGroup;
 
   constructor(
@@ -17,32 +25,27 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private router: Router
   ) {
-    // this.email = '';
-    // this.password = '';
     this.loginForm = this.formBuilder.group({
       email: [],
       password: []
     });
+    this.translate = true;
+    this.translate1 = false;
+    this.isMobile = true;
   }
 
-  // public login() {
-  //   if (this.email == '') {
-  //     alert('pls fill');
-  //     return;
-  //   }
-  //   if (this.password == '') {
-  //     alert('pls fill');
-  //     return;
-  //   }
-  //   this.auth.onLogin(this.email, this.password);
-  //   this.email = '';
-  //   this.password = '';
-  // }
+  ngOnInit(): void {
+    this.onResize(event);
+  }
 
   public onLogin() {
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
       this.router.navigateByUrl('signup');
     }
+  }
+  public onTranslate() {
+    this.translate = !this.translate;
+    this.translate1 = !this.translate1;
   }
 }

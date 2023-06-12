@@ -7,6 +7,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -25,6 +26,9 @@ import { AuthService } from './services/auth.service';
   exports: [
     MasterComponent
   ],
-  providers: [AuthService]
+  providers: [
+    AuthGuard,
+    AuthService
+  ]
 })
 export class CoreModule { }
