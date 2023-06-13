@@ -20,11 +20,12 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = localStorage.getItem('token');
+    this.loaderService.show();
     const modifiedReq = request.clone({
       headers: request.headers.set('Authorization', `Bearer ${token}`)
     });
     return next.handle(modifiedReq).pipe(finalize(() => {
-      this.loaderService.load$.next(false);
+      this.loaderService.hide();
     }),
       catchError((res: HttpErrorResponse) => {
         switch (res.status) {

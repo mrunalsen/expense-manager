@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './core/services/interceptor/token.interceptor';
 
 
 @NgModule({
@@ -27,7 +29,13 @@ import { SharedModule } from './shared/shared.module';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [
+    {
+      multi: true,
+      useClass: TokenInterceptor,
+      provide: HTTP_INTERCEPTORS
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
