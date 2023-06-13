@@ -10,6 +10,7 @@ import { AuthService } from './services/auth/auth.service';
 import { LoaderService } from './services/loader/loader.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     LoginComponent,
     MasterComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   exports: [
-    MasterComponent
+    MasterComponent,
+    LoaderComponent
   ],
   providers: [
     AuthService,

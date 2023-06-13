@@ -3,8 +3,19 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class LoaderService {
-  public load$: Subject<Boolean>;
+  /** Subject to show/hide loader */
+  public isLoading = new Subject<boolean>();
+
   constructor() {
-    this.load$ = new Subject();
+  }
+
+  /** To show the loader */
+  public show(): void {
+    this.isLoading.next(true);
+  }
+
+  /** To hide the loader */
+  public hide(): void {
+    this.isLoading.next(false);
   }
 }

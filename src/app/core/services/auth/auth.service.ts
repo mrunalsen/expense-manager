@@ -4,15 +4,12 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 @Injectable()
 export class AuthService {
-  // isLoggedIn: boolean;
   public userToken: any;
   constructor(
     private firebaseAuth: AngularFireAuth,
     private toastr: ToastrService,
     private router: Router
-  ) {
-    // this.isLoggedIn = false;
-  }
+  ) { }
 
   /**
    * @name login
@@ -50,7 +47,7 @@ export class AuthService {
    * @description method for loggin out
    */
   public logout() {
-    this.toastr.error('Successfully Logged Out', '');
+    this.toastr.info('Successfully Logged Out', '');
     this.firebaseAuth.signOut().then(() => {
       localStorage.removeItem('token');
       this.router.navigateByUrl('login');
@@ -58,6 +55,11 @@ export class AuthService {
       err => this.toastr.error(err.message)
     );
   }
+
+  /**
+   * @name getToken()
+   * @description method for getting token from local storage
+   */
   public getToken() {
     this.userToken = localStorage.getItem('token') ?? '';
     return this.userToken;
