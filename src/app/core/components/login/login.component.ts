@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
   public onLogin() {
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
+      // this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data) => console.log(data));
       this.router.navigateByUrl('dashboard');
     }
   }
