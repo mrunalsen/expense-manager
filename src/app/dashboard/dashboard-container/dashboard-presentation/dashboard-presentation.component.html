@@ -1,74 +1,107 @@
 <main class="d-flex">
     <!-- Start : Dashboard -->
-    <section class="container w-75">
+    <section class="container">
+
         <!-- Start : Header -->
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between py-4">
             <div>
                 <h1>Dashboard</h1>
                 <p class="ms-1 mb-0"><i class="bi bi-calendar-date"></i> {{currentDate | date: 'EEEE, MMMM d'}}</p>
             </div>
-            <form class="d-flex mt-auto" role="search">
-                <input class="form-control me-2 d-block" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary d-block" type="submit">Search</button>
-            </form>
         </div>
         <!-- End : Header -->
+
         <!-- Start : Body -->
         <div>
+            <!-- Start : Weekly Chart and wallet -->
             <div class="d-flex flex-wrap">
                 <!-- Start : Weekly -->
-                <div class="bg-white rounded-4 col-12 col-lg-7">
+                <div class="section-1 bg-gray rounded-4 col-12 col-xl-7 p-1">
+                    <h6 class="px-2 py-3">Weekly Report</h6>
                     <canvas id="barchart"></canvas>
                 </div>
                 <!-- End : Weekly -->
-                <!-- Start : Wallet -->
-                <div class="d-flex bg-white rounded-4 col-12 col-lg-5">
-                    <h6>Your Wallet</h6>
-                    <div>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            add wallet <i class="bi bi-plus"></i>
-                        </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
+                <!-- Start : Transaction history and savings chart -->
+                <div class="section-1 d-flex flex-column col-12 col-xl-5 p-1">
+                    <div class="d-flex justify-content-between">
+                        <h6>Transaction</h6>
+                        <button class="btn btn-primary">see all</button>
+                    </div>
+                    <!-- Start : Wallet cards -->
+                    <div class="overflow-auto mt-2">
+                        <div *ngFor="let item of wallet; let i = index; trackBy: cardName"
+                            class="d-flex bg-gray rounded-4 mt-2">
+                            <div class="d-flex w-100">
+                                <div class="{{item.icon}} bg-dark-subtle rounded p-4 m-3"></div>
+                                <div class="d-flex flex-column justify-content-center">
+                                    <p class="fw-semibold mb-0">{{item.name}}</p>
+                                    <p class="mb-0">{{item.money}}</p>
                                 </div>
                             </div>
+                            <div class="{{item.menu}} d-flex align-items-center me-4"></div>
                         </div>
+                        <!-- End : Wallet cards -->
+                    </div>
+                    <!-- End : Wallet -->
+                </div>
+                <!-- Start : Transaction history and savings chart -->
+            </div>
+            <!-- End : Weekly Chart and wallet -->
+
+            <!-- Start : Income Cards -->
+            <div class="section-2 d-flex flex-wrap">
+                <div class="col-12 col-lg-4">
+                    <div class="bg-gray d-flex rounded-4 m-2">
+                        <div class="d-flex flex-column justify-content-center ps-3">
+                            <p class="fw-lighter mb-0">Earnings</p>
+                            <p class="fs-3">$105.4</p>
+                        </div>
+                        <canvas></canvas>
                     </div>
                 </div>
-                <!-- End : Wallet -->
+                <div class="col-12 col-lg-4">
+                    <div class="bg-gray d-flex rounded-4 m-2">
+                        <div class="d-flex flex-column justify-content-center ps-3">
+                            <p class="fw-lighter mb-0">Spendings</p>
+                            <p class="fs-3">$105.4</p>
+                        </div>
+                        <canvas></canvas>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="bg-gray d-flex rounded-4 m-2">
+                        <div class="d-flex flex-column justify-content-center ps-3">
+                            <p class="fw-lighter mb-0">Savings</p>
+                            <p class="fs-3">$105.4</p>
+                        </div>
+                        <canvas></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="earning"></div>
-            <div class="spendings"></div>
-            <div class="savings"></div>
+            <!-- End : Income Cards -->
+
+            <!-- Start : Savings Project -->
+            <div class="d-flex flex-wrap">
+                <div class="col-6">
+                    <div class="d-flex justify-content-between">
+                        <h6>Your Savings Project</h6>
+                        <button class="btn btn-primary">Add Project</button>
+                    </div>
+                    <div *ngFor="let item of savings; trackBy: savingsName"
+                        class="bg-gray d-flex justify-content-between mt-2 rounded-4">
+                        <p class="p-3 mb-0">{{item.name}}</p>
+                        <p class="p-3 mb-0">{{item.saving}}/{{item.total}}</p>
+                    </div>
+                </div>
+                <div class="col-6"></div>
+            </div>
+            <!-- Start : Savings Project -->
+
             <div class="transactions"></div>
             <div class="total"></div>
         </div>
         <!-- End : Body -->
     </section>
     <!-- End : Dashboard -->
-
-    <!-- Start : Profile -->
-    <section class="bg-white rounded-start-4 w-25">
-        Profile
-    </section>
-    <!-- End : Profile -->
 </main>

@@ -9,12 +9,75 @@ Chart.register(...registerables, ChartDataLabels);
 })
 export class DashboardPresentationComponent implements OnInit {
   public currentDate = new Date();
+  public wallet = [
+    {
+      name: 'Paypal',
+      money: 2750.75,
+      icon: 'bi bi-paypal',
+      menu: 'bi bi-three-dots-vertical'
+    },
+    {
+      name: 'Jenius',
+      money: 475.25,
+      icon: 'bi bi-paypal',
+      menu: 'bi bi-three-dots-vertical'
+    },
+    {
+      name: 'Jenius',
+      money: 475.25,
+      icon: 'bi bi-paypal',
+      menu: 'bi bi-three-dots-vertical'
+    },
+    {
+      name: 'Jenius',
+      money: 475.25,
+      icon: 'bi bi-paypal',
+      menu: 'bi bi-three-dots-vertical'
+    },
+    {
+      name: 'Jenius',
+      money: 475.25,
+      icon: 'bi bi-paypal',
+      menu: 'bi bi-three-dots-vertical'
+    },
+    {
+      name: 'Jenius',
+      money: 475.25,
+      icon: 'bi bi-paypal',
+      menu: 'bi bi-three-dots-vertical'
+    },
+  ];
 
+  public savings = [
+    {
+      name: 'Samsung GS23 Ultra',
+      total: 1000,
+      saving: 100
+    },
+    {
+      name: 'Iphone',
+      total: 1000,
+      saving: 100
+    },
+    {
+      name: 'Home',
+      total: 100000,
+      saving: 100
+    },
+  ];
   constructor() { }
 
   ngOnInit(): void {
     this.renderChart();
   }
+
+  public cardName(index: number, cardDetails: any): string {
+    return cardDetails.name;
+  }
+  public savingsName(index: number, savingsDetails: any): string {
+    return savingsDetails.name;
+  }
+
   // margin for legends
   public legendMargin = {
     id: 'legendMargin',
@@ -41,7 +104,7 @@ export class DashboardPresentationComponent implements OnInit {
           },
           {
             label: 'Spent',
-            data: [500, 500, 500, 500],
+            data: [500, 2500, 12000, 700],
             borderWidth: 1,
             borderRadius: 8
             // backgroundColor: ['#54d2f9']
@@ -81,7 +144,7 @@ export class DashboardPresentationComponent implements OnInit {
             color: 'transparent'
           },
           legend: {
-            // align: 'start',
+            align: 'start',
             labels: {
               usePointStyle: true,
               pointStyle: 'circle',
