@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+    <div class="mb-3">
+        <label for="income" class="form-label">Income</label>
+        <input type="text" class="form-control" id="income" formControlName="incoming">
+    </div>
+    <div class="mb-3">
+        <label for="income" class="form-label">Income</label>
+        <input type="text" class="form-control" id="income" formControlName="outgoing">
+    </div>
+    <button type="submit" (click)="onSubmit()">submit</button>
+</form>
+
+<ul>
+    <li *ngFor="let items of listData">{{items.incoming}} {{items.outgoing}}</li>
+</ul>
