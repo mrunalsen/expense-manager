@@ -16,20 +16,20 @@ export class AuthService {
    * @name login
    * @description method for loggin in app via firebase auth
    */
-  public login(email: string, password: string): void {
-    this.firebaseAuth.signInWithEmailAndPassword(email, password).then(() => {
-      localStorage.setItem('token', 'true');
-      this.toastr.success('Successfully Logged in');
-      this.router.navigateByUrl('dashboard');
-    }, err => {
-      this.toastr.error(err.message);
-      this.router.navigateByUrl('/login');
-    });
-  }
-
-  // public login(email: string, password: string): Observable<any> {
-  //   return from(this.firebaseAuth.signInWithEmailAndPassword(email, password));
+  // public login(email: string, password: string): void {
+  //   this.firebaseAuth.signInWithEmailAndPassword(email, password).then(() => {
+  //     localStorage.setItem('token', 'true');
+  //     this.toastr.success('Successfully Logged in');
+  //     this.router.navigateByUrl('dashboard');
+  //   }, err => {
+  //     this.toastr.error(err.message);
+  //     this.router.navigateByUrl('/login');
+  //   });
   // }
+
+  public login(email: string, password: string): Observable<any> {
+    return from(this.firebaseAuth.signInWithEmailAndPassword(email, password));
+  }
 
   /**
    * @name onRegister

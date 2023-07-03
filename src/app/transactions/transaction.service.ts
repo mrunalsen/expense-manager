@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc, Query, OrderByDirection } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc, orderBy, query } from '@angular/fire/firestore';
 import { Transactions } from './transactions.model';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -24,9 +24,10 @@ export class TransactionService {
    */
   public getData(): Observable<Transactions[]> {
     let userRef = collection(this.fireStore, 'User');
-    console.log('lol', userRef);
+    const q = query(userRef, orderBy("incoming", "desc"));
+    console.log('lol', q);
 
-    return collectionData(userRef, { idField: 'id' }) as Observable<Transactions[]>;
+    return collectionData(q, { idField: 'id' }) as Observable<Transactions[]>;
   }
   // public getLatestDocument(): Observable<Transactions> {
   //   return this.fireStore.collection().ref('myUsers').orderByChild("age").limitToLast(3);

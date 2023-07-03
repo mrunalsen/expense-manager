@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, catchError, finalize, of } from 'rxjs';
+import { Observable, catchError, finalize, of, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from '../loader/loader.service';
 
@@ -36,7 +36,8 @@ export class TokenInterceptor implements HttpInterceptor {
             this.toastr.error(res.error.message);
             break;
         }
-        return of();
+        return throwError(null);
+        // return of();
       }
       )
     );
