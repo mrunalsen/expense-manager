@@ -39,16 +39,23 @@ export class TransactionsPresentationComponent implements OnInit {
   @Output() add: EventEmitter<Transactions>;
   @Output() edit: EventEmitter<Transactions>;
 
+
+  /**
+   * @name Form
+   * @description A Form group for submitting credit or debit
+   */
   public form: FormGroup;
 
+  public submitBtn: boolean;
   constructor(
     private formBuilder: FormBuilder,
     private readonly presenter: TransactionsPresenterService,
     private trans: TransactionService
   ) {
-    this.form = presenter.formBuild();
     this.add = new EventEmitter<Transactions>();
     this.edit = new EventEmitter<Transactions>();
+    this.form = presenter.formBuild();
+    this.submitBtn = false;
   }
 
   ngOnInit(): void {

@@ -24,8 +24,8 @@ export class TransactionService {
    */
   public getData(): Observable<Transactions[]> {
     let userRef = collection(this.fireStore, 'User');
-    const q = query(userRef, orderBy("incoming", "desc"));
-    console.log('lol', q);
+    const q = query(userRef, orderBy("date", "desc"));
+    console.log(q);
 
     return collectionData(q, { idField: 'id' }) as Observable<Transactions[]>;
   }
