@@ -38,7 +38,8 @@ export class TransactionsPresentationComponent implements OnInit {
 
   @Output() add: EventEmitter<Transactions>;
   @Output() edit: EventEmitter<Transactions>;
-
+  @Output() delete: EventEmitter<string>;
+  @Output() update: EventEmitter<Transactions>;
 
   /**
    * @name Form
@@ -54,6 +55,8 @@ export class TransactionsPresentationComponent implements OnInit {
   ) {
     this.add = new EventEmitter<Transactions>();
     this.edit = new EventEmitter<Transactions>();
+    this.delete = new EventEmitter<string>();
+    this.update = new EventEmitter<Transactions>();
     this.form = presenter.formBuild();
     this.submitBtn = false;
   }
@@ -72,5 +75,9 @@ export class TransactionsPresentationComponent implements OnInit {
     this.presenter.onSubmit(this.form);
     console.log(this.form.value);
     this.form.reset();
+  }
+
+  public onDelete(id: string) {
+    this.delete.emit(id);
   }
 }

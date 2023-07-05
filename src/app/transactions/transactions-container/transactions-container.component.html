@@ -1,2 +1,3 @@
-<transactions [formData]="transaction$ | async" (add)="addData($event)" [listData]="list$ | async">
+<transactions [formData]="transaction$ | async" (add)="addData($event)" [listData]="list$ | async"
+    (delete)="deleteData($event)">
 </transactions>

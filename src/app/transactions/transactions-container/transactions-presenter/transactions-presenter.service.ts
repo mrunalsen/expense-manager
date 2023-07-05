@@ -18,14 +18,15 @@ export class TransactionsPresenterService {
 
   public formBuild(): FormGroup {
     return this.fb.group({
-      incoming: ['', Validators.required],
-      outgoing: ['', Validators.required],
-      date: ''
+      title: ['', Validators.required],
+      description: [''],
+      amount: ['', Validators.required],
+      date: '',
+      type: ['']
     });
   }
   public onSubmit(form: FormGroup) {
     form.controls['date'].setValue(new Date().getTime());
     this.formData.next(form.value);
   }
-
 }

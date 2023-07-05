@@ -38,8 +38,8 @@ export class TransactionService {
    * @name deleteData
    * @description Deletes data from Firebase
    */
-  public deleteData(user: Transactions) {
-    let docRef = doc(this.fireStore, `user/${user.id}`);
+  public deleteData(user: string) {
+    let docRef = doc(this.fireStore, `User/${user}`);
     return deleteDoc(docRef);
   }
 

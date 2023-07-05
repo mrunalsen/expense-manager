@@ -1,18 +1,24 @@
 export class Transactions {
     id: string;
-    incoming: string;
-    outgoing: string;
+    amount: number;
     date: Date;
+    title: string;
+    description: string;
+    type: boolean;
     constructor(
         id: string,
-        incoming: string,
-        outgoing: string,
-        date: Date
+        title: string,
+        description: string,
+        amount: number,
+        date: Date,
+        type: boolean,
     ) {
         this.id = id;
-        this.incoming = incoming;
-        this.outgoing = outgoing;
+        this.title = title;
+        this.description = description;
+        this.amount = amount;
         this.date = date;
+        this.type = type;
     }
 }
 

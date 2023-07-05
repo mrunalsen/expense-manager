@@ -25,4 +25,11 @@ export class TransactionsContainerComponent implements OnInit {
   public getData() {
     this.list$ = this.transactionService.getData();
   }
+  public deleteData(user: string) {
+    console.log(user);
+    this.transactionService.deleteData(user);
+  }
+  public updateData(form: Transactions, data: any) {
+    this.transactionService.updateData(form, data);
+  }
 }
