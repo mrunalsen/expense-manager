@@ -1,0 +1,147 @@
+<!-- Button trigger modal -->
+<div class="d-flex justify-content-between">
+    <div>
+        <h2>Transactions</h2>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Transaction +
+    </button>
+</div>
+<!-- Original Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Type of Transaction</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form">
+                    <div class="mb-3">
+                        <label for="income" class="form-label">Income</label>
+                        <input type="text" class="form-control" id="income" formControlName="incoming">
+                    </div>
+                    <div class="mb-3">
+                        <label for="income" class="form-label">Outgoing</label>
+                        <input type="text" class="form-control" id="income" formControlName="outgoing">
+                    </div>
+                    <div>
+                        <label class="switch">
+                            <input #checkbox type="checkbox" checked="" (change)="true" id="switch">
+                        </label>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-outline-secondary text-white me-2"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="onSubmit()"
+                            data-bs-dismiss="modal">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Original Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Type of Transaction</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form">
+                    <!-- Start : Transaction Title -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" formControlName="title">
+                    </div>
+                    <!-- End : Transaction Title -->
+
+                    <!-- Start : Transaction Description -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" formControlName="description">
+                    </div>
+                    <!-- End : Transaction Description -->
+
+                    <!-- Start : Transaction Type -->
+                    <div>
+                        <input type="checkbox" name="transactiontype" id="transactiontype">
+                        <label for="transactiontype" class="user-select-none cursor-pointer">Credit</label>
+                    </div>
+                    <!-- End : Transaction Type -->
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="text" class="form-control" id="amount" formControlName="amount">
+                    </div>
+                    <div class="mb-3">
+                        <!-- <input type="color" name="" id="" value="#fff"> -->
+                    </div>
+                    <!-- Start : Switch -->
+                    <div>
+                        <!-- <label class="switch">
+                            <input #checkbox type="checkbox" checked="" (change)="true" id="switch">
+                        </label> -->
+                    </div>
+                    <!-- End : Switch -->
+                    <div class="text-end">
+                        <button type="button" class="btn btn-outline-secondary me-2"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="onSubmit()"
+                            data-bs-dismiss="modal">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <ul>
+        <li *ngFor="let items of listData" class="bg-body-secondary rounded border p-3 my-1">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div>{{items.title}}</div>
+                    <div>{{items.description}}</div>
+                </div>
+                <div>
+                    <button class="btn btn-danger" (click)="onDelete(items.id)">Delete</button>
+                </div>
+                <div>&#8377;{{items.amount}}</div>
+                <!-- <ng-container *ngIf="items.incoming; then incoming else outgoing"></ng-container>
+                <ng-template #incoming>
+                    <span class="text-success">&#8377;{{items.incoming}}</span>
+                </ng-template>
+                <ng-template #outgoing>
+                    <span class="text-danger">&#8377;{{items.outgoing}}</span>
+                </ng-template> -->
+            </div>
+        </li>
+        <div class="accordion accordion-flush" id="accordionFlushExample" *ngFor="let items of listData">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="collapsed d-flex justify-content-between w-100 p-3" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                        aria-controls="flush-collapseOne">
+                        <div>
+                            {{items.title}}
+                        </div>
+                        <div>&#8377;{{items.amount}}</div>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body d-flex justify-content-between">
+                        <div>{{items.description}}</div>
+                        <div>
+                            <button class="btn btn-danger" (click)="onDelete(items.id)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+</div>

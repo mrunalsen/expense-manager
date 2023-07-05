@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable, from } from 'rxjs';
 @Injectable()
 export class AuthService {
   public userToken: any;
@@ -15,15 +16,19 @@ export class AuthService {
    * @name login
    * @description method for loggin in app via firebase auth
    */
-  public login(email: string, password: string): void {
-    this.firebaseAuth.signInWithEmailAndPassword(email, password).then(() => {
-      localStorage.setItem('token', 'true');
-      this.toastr.success('Successfully Logged in');
-      this.router.navigateByUrl('dashboard');
-    }, err => {
-      this.toastr.error(err.message);
-      this.router.navigateByUrl('/login');
-    });
+  // public login(email: string, password: string): void {
+  //   this.firebaseAuth.signInWithEmailAndPassword(email, password).then(() => {
+  //     localStorage.setItem('token', 'true');
+  //     this.toastr.success('Successfully Logged in');
+  //     this.router.navigateByUrl('dashboard');
+  //   }, err => {
+  //     this.toastr.error(err.message);
+  //     this.router.navigateByUrl('/login');
+  //   });
+  // }
+
+  public login(email: string, password: string): Observable<any> {
+    return from(this.firebaseAuth.signInWithEmailAndPassword(email, password));
   }
 
   /**

@@ -40,8 +40,15 @@ export class LoginComponent implements OnInit {
 
   public onLogin() {
     if (this.loginForm.valid) {
-      this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
-      this.router.navigateByUrl('dashboard');
+      // this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
+      this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data) => {
+        localStorage.setItem('token', 'true');
+        // this.toastr.success('Successfully Logged in');
+        this.router.navigateByUrl('dashboard');
+        console.log(data.user.multiFactor.user.providerData);
+
+      });
+      // this.router.navigateByUrl('dashboard');
     }
   }
   public onTranslate() {
