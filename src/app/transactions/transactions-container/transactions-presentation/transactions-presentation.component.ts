@@ -65,8 +65,9 @@ export class TransactionsPresentationComponent implements OnInit {
    * @description A Form group for submitting credit or debit
    */
   public form: FormGroup;
-  isChecked: boolean;
+  public isChecked: boolean;
   public submitBtn: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private readonly presenter: TransactionsPresenterService,
