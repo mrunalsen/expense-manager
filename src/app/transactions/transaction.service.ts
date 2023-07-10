@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc, orderBy, query } from '@angular/fire/firestore';
 import { Transactions } from './transactions.model';
 import { Observable } from 'rxjs/internal/Observable';
+import { TransactionAdapter } from './transaction-adapter/transaction.adapter';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
-  constructor(private fireStore: Firestore) { }
+  constructor(
+    private fireStore: Firestore,
+    // private transactionAdapter: TransactionAdapter
+  ) { }
 
   /**
    * @name addData
@@ -15,6 +19,7 @@ export class TransactionService {
    */
   public addData(user: Transactions) {
     user.id = doc(collection(this.fireStore, 'id')).id;
+    // const newres = this.transactionAdapter.toResponse(user);
     return addDoc(collection(this.fireStore, 'User'), user);
   }
 
