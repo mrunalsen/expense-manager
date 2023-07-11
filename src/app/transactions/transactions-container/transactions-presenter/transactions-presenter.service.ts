@@ -22,7 +22,7 @@ export class TransactionsPresenterService {
       description: [''],
       amount: ['', Validators.required],
       date: '',
-      type: [false]
+      type: [false],
     });
   }
   public onSubmit(form: FormGroup) {

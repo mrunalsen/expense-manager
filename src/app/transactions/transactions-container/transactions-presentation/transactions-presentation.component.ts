@@ -83,6 +83,11 @@ export class TransactionsPresentationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form.get('type')?.valueChanges.subscribe((res) => {
+      console.log(res);
+      this.isChecked = res;
+    });
+
     this.presenter.formData$.subscribe((res) => {
       this.add.emit(res);
     });
@@ -103,13 +108,29 @@ export class TransactionsPresentationComponent implements OnInit {
     this.presenter.onSubmit(this.form);
     console.log(this.form.value);
     this.form.reset();
+    this.isChecked = false;
+    this.form.get('type')?.setValue(false);
   }
 
+  /**
+   * @name onCloseModal
+   * @description this method resets the transaction form modal on clicking close button
+  */
+  public onCloseModal() {
+    this.form.get('type')?.setValue(false);
+    this.form.reset();
+    return this.isChecked = false;
+  }
+
+  /**
+   * @name onDelete
+   * @description event emitter emits the delete event for deleting items from the list
+   */
   public onDelete(id: string) {
     this.delete.emit(id);
   }
-  public isCredit(event: any) {
-    console.log(event.target.checked);
-    return this.isChecked = event.target.checked;
-  }
+  // public isCredit(event: any) {
+  //   console.log(event.target.checked);
+  //   return this.isChecked = event.target.checked;
+  // }
 }
