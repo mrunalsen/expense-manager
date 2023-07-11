@@ -3,70 +3,10 @@
     <div>
         <h2>Transactions</h2>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Transaction +
-    </button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header" [@focusPanel]='isChecked'>
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Type of Transaction</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    (click)="onCloseModal()"></button>
-            </div>
-            <div class="modal-body">
-                <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                    <!-- Start : Transaction Title -->
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="e.g. Amazon Prime"
-                            formControlName="title">
-                    </div>
-                    <!-- End : Transaction Title -->
-
-                    <!-- Start : Transaction Description -->
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description <small>- optional</small></label>
-                        <input type="text" class="form-control" id="description" maxlength="160"
-                            placeholder="e.g. Premium plan" formControlName="description">
-                    </div>
-                    <!-- End : Transaction Description -->
-
-                    <!-- Start : Transaction Type -->
-                    <div class="transactiontypecontainer overflow-hidden">
-                        <input type="checkbox" name="transactiontype" id="transactiontype" class="d-none"
-                            formControlName="type">
-                        <label for="transactiontype" class="cursor-pointer transactiontype">
-                            <div class="text-danger user-select-none"><i class="bi bi-caret-down"></i> Debit</div>
-                            <div class="text-success user-select-none"><i class="bi bi-caret-up"></i> Credit</div>
-                        </label>
-                    </div>
-
-                    <!-- <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="test">
-                        <label class="form-check-label user-select-none" for="exampleCheck1">Check me out</label>
-                    </div> -->
-                    <!-- End : Transaction Type -->
-                    <div class="mb-3">
-                        <label for="amount" class="form-label">Amount</label>
-                        <input type="number" class="form-control" id="amount" placeholder="Enter amount"
-                            formControlName="amount">
-                    </div>
-                    <div class="text-end">
-                        <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal"
-                            (click)="onCloseModal()">Close</button>
-                        <button type="submit" class="btn" [@focusPanel]='isChecked' [disabled]="!form.valid"
-                            data-bs-dismiss="modal">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div>
+        <button class="btn btn-warning" (click)="onClickOverlay()">overlay</button>
     </div>
 </div>
-
 <div class="container">
     <ul>
         <li>

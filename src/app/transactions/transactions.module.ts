@@ -7,19 +7,22 @@ import { TransactionsContainerComponent } from './transactions-container/transac
 import { ReactiveFormsModule } from '@angular/forms';
 import { TransactionAdapter } from './transaction-adapter/transaction.adapter';
 import { TransactionsPresentationComponent } from './transactions-container/transactions-presentation/transactions-presentation.component';
-
+import { OverlayModule } from '@angular/cdk/overlay';
+import { TransactionFormPresentationComponent } from './transactions-container/transactions-presentation/transaction-form-presentation/transaction-form-presentation.component';
 
 @NgModule({
   declarations: [
     TransactionsComponent,
     TransactionsContainerComponent,
     TransactionsPresentationComponent,
-    TransactionsPresentationComponent
+    TransactionsPresentationComponent,
+    TransactionFormPresentationComponent
   ],
   imports: [
     CommonModule,
     TransactionsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OverlayModule
   ],
   providers: [
     TransactionAdapter

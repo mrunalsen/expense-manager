@@ -9,7 +9,6 @@ import {
   style,
   animate,
   transition,
-  // ...
 } from '@angular/animations';
 @Component({
   selector: 'transactions',
@@ -29,6 +28,7 @@ import {
   ],
 })
 export class TransactionsPresentationComponent implements OnInit {
+
   /**
    * @name formData
    * @description Form to set income outcome transactions
@@ -133,4 +133,8 @@ export class TransactionsPresentationComponent implements OnInit {
   //   console.log(event.target.checked);
   //   return this.isChecked = event.target.checked;
   // }
+
+  public onClickOverlay() {
+    this.presenter.openOverlay();
+  }
 }
